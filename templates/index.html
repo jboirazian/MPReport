@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BikeShare Admin Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- DaisyUI CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Light grey background */
+        }
+        /* Custom scrollbar for sidebar */
+        .sidebar-menu::-webkit-scrollbar {
+            width: 8px;
+        }
+        .sidebar-menu::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .sidebar-menu::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        .sidebar-menu::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="drawer lg:drawer-open">
+        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col items-center justify-start p-4 bg-base-200 min-h-screen">
+            <!-- Navbar for mobile/tablet view -->
+            <div class="w-full navbar bg-base-100 rounded-box shadow-md mb-4 lg:hidden">
+                <div class="flex-none">
+                    <label for="my-drawer-2" class="btn btn-square btn-ghost drawer-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </label>
+                </div>
+                <div class="flex-1 px-2 mx-2 text-lg font-bold">BikeShare Dashboard</div>
+                <div class="flex-none">
+                    <div class="dropdown dropdown-end">
+                        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
+                            <div class="w-10 rounded-full">
+                                <img alt="User Avatar" src="https://placehold.co/40x40/FF5733/FFFFFF?text=JD" onerror="this.onerror=null;this.src='https://placehold.co/40x40/FF5733/FFFFFF?text=User';" />
+                            </div>
+                        </div>
+                        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                            <li><a>Profile</a></li>
+                            <li><a>Settings</a></li>
+                            <li><a>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content area -->
+            <div class="flex flex-col w-full max-w-7xl mx-auto p-4 gap-6">
+                <h1 class="text-3xl font-bold text-gray-800 hidden lg:block">BikeShare Overview</h1>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="stats shadow-lg bg-white rounded-box p-4 flex flex-col items-center justify-center">
+                        <div class="stat">
+                            <div class="stat-figure text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 8h2a2 2 0 012 2v4a2 2 0 01-2 2h-2m-4 0h-4m4 0v-4m-4 4V8m-4 0H4a2 2 0 00-2 2v4a2 2 0 002 2h2m-4-8h16"></path></svg>
+                            </div>
+                            <div class="stat-title">Total Bikes</div>
+                            <div class="stat-value text-primary">5.2K</div>
+                            <div class="stat-desc">10% more than last month</div>
+                        </div>
+                    </div>
+
+                    <div class="stats shadow-lg bg-white rounded-box p-4 flex flex-col items-center justify-center">
+                        <div class="stat">
+                            <div class="stat-figure text-secondary">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <div class="stat-title">Active Rides</div>
+                            <div class="stat-value text-secondary">1,234</div>
+                            <div class="stat-desc">5% more than yesterday</div>
+                        </div>
+                    </div>
+
+                    <div class="stats shadow-lg bg-white rounded-box p-4 flex flex-col items-center justify-center">
+                        <div class="stat">
+                            <div class="stat-figure text-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <div class="stat-title">Available Docks</div>
+                            <div class="stat-value text-accent">876</div>
+                            <div class="stat-desc">Across all stations</div>
+                        </div>
+                    </div>
+
+                    <div class="stats shadow-lg bg-white rounded-box p-4 flex flex-col items-center justify-center">
+                        <div class="stat">
+                            <div class="stat-figure text-info">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            </div>
+                            <div class="stat-title">Revenue Today</div>
+                            <div class="stat-value text-info">$3,450</div>
+                            <div class="stat-desc">Compared to $2,800 yesterday</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Rides Table -->
+                <div class="card shadow-lg bg-white rounded-box p-6">
+                    <h2 class="text-xl font-semibold mb-4 text-gray-700">Recent Rides</h2>
+                    <div class="overflow-x-auto">
+                        <table class="table w-full">
+                            <thead>
+                                <tr>
+                                    <th>Ride ID</th>
+                                    <th>User</th>
+                                    <th>Bike ID</th>
+                                    <th>Duration</th>
+                                    <th>Cost</th>
+                                    <th>Status</th>
+                                    <th>Start Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#R001</td>
+                                    <td>Alice Smith</td>
+                                    <td>B007</td>
+                                    <td>30 min</td>
+                                    <td>$5.00</td>
+                                    <td><div class="badge badge-success">Completed</div></td>
+                                    <td>2024-07-25 10:00</td>
+                                </tr>
+                                <tr>
+                                    <td>#R002</td>
+                                    <td>Bob Johnson</td>
+                                    <td>B112</td>
+                                    <td>15 min</td>
+                                    <td>$2.50</td>
+                                    <td><div class="badge badge-warning">Ongoing</div></td>
+                                    <td>2024-07-25 10:15</td>
+                                </tr>
+                                <tr>
+                                    <td>#R003</td>
+                                    <td>Charlie Brown</td>
+                                    <td>B042</td>
+                                    <td>45 min</td>
+                                    <td>$7.50</td>
+                                    <td><div class="badge badge-error">Issue</div></td>
+                                    <td>2024-07-24 18:30</td>
+                                </tr>
+                                <tr>
+                                    <td>#R004</td>
+                                    <td>Diana Prince</td>
+                                    <td>B201</td>
+                                    <td>20 min</td>
+                                    <td>$3.50</td>
+                                    <td><div class="badge badge-success">Completed</div></td>
+                                    <td>2024-07-24 11:45</td>
+                                </tr>
+                                <tr>
+                                    <td>#R005</td>
+                                    <td>Eve Adams</td>
+                                    <td>B099</td>
+                                    <td>10 min</td>
+                                    <td>$2.00</td>
+                                    <td><div class="badge badge-info">Reserved</div></td>
+                                    <td>2024-07-25 10:30</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Charts Section (Placeholder) -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="card shadow-lg bg-white rounded-box p-6">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-700">Daily Ride Volume</h2>
+                        <div class="h-64 flex items-center justify-center text-gray-500 bg-base-200 rounded-lg">
+                            [Chart Placeholder - e.g., Line Chart showing rides per day]
+                        </div>
+                    </div>
+                    <div class="card shadow-lg bg-white rounded-box p-6">
+                        <h2 class="text-xl font-semibold mb-4 text-gray-700">Station Utilization</h2>
+                        <div class="h-64 flex items-center justify-center text-gray-500 bg-base-200 rounded-lg">
+                            [Chart Placeholder - e.g., Bar Chart showing busiest stations]
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Register New Bike Form -->
+                <div class="card shadow-lg bg-white rounded-box p-6">
+                    <h2 class="text-xl font-semibold mb-4 text-gray-700">Register New Bike</h2>
+                    <form class="space-y-4">
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Bike ID</span>
+                            </label>
+                            <input type="text" placeholder="e.g., B001" class="input input-bordered w-full rounded-md" />
+                        </div>
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Current Station</span>
+                            </label>
+                            <input type="text" placeholder="e.g., Central Park Station" class="input input-bordered w-full rounded-md" />
+                        </div>
+                        <div class="form-control">
+                            <label class="label">
+                                <span class="label-text">Bike Status</span>
+                            </label>
+                            <select class="select select-bordered w-full rounded-md">
+                                <option disabled selected>Select status</option>
+                                <option>Available</option>
+                                <option>In Use</option>
+                                <option>Under Maintenance</option>
+                                <option>Missing</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary rounded-md w-full">Register Bike</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="drawer-side z-20">
+            <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+            <ul class="menu p-4 w-80 min-h-full bg-base-100 text-base-content shadow-lg sidebar-menu overflow-y-auto">
+                <!-- Sidebar content here -->
+                <li class="mb-2">
+                    <a class="font-medium active rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a class="font-medium rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857M17 20v-9a2 2 0 00-2-2H9a2 2 0 00-2 2v9m-1-7h10a2 2 0 012 2v7H6V12a2 2 0 012-2z"></path></svg>
+                        Users
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a class="font-medium rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        Bikes
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a class="font-medium rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                        Rides
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a class="font-medium rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        Stations
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a class="font-medium rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        Settings
+                    </a>
+                </li>
+                <div class="divider"></div>
+                <li>
+                    <a class="font-medium rounded-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
